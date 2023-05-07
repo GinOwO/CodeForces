@@ -10,6 +10,16 @@
                 "-o", "main.exe"
             ],
             "group": "build"
-        }        
+        },
+        {
+            "label": "cppbuild",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g", "\"${relativeFile}\"",
+                "-o", "${relativeFileDirname}/${fileBasenameNoExtension}.exe"
+            ],
+            "group": "build"
+        }
     ]
 }

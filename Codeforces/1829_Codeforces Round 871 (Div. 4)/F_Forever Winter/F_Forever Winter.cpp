@@ -11,6 +11,7 @@
 #include<algorithm>
 #include<random>
 #include<chrono>
+#include<map>
 using namespace std;
 
 #define UNUSED [[maybe_unused]]
@@ -55,19 +56,19 @@ UNUSED uniform_real_distribution<> pp(0.0,1.0);
 
 #define REPk(k, n) for(int i=k; i<n; i++)
 #define REP(n) REPk(0, n)
-#define FOR(seq) for(auto&c:seq)
+#define FOR(var,seq) for(auto&var:seq)
 
 TTT istream &operator>>(UNUSED istream &cin,PTT &a) { RET cin>>a.FI>>a.SE; }
-TT istream &operator>>(UNUSED istream &cin, UNUSED VT &a) { FOR(a) cin>>c; RET cin; }
+TT istream &operator>>(UNUSED istream &cin, UNUSED VT &a) { FOR(c,a) cin>>c; RET cin; }
 TTT ostream &operator<<(ostream &cout,const PTT &a) { RET cout<<a.FI<<' '<<a.SE; }
-TTT ostream &operator<<(UNUSED ostream &cout,UNUSED const VTT &a) { FOR(a) cout<<c<<'\n'; RET cout; }
+TTT ostream &operator<<(UNUSED ostream &cout,UNUSED const VTT &a) { FOR(c,a) cout<<c<<'\n'; RET cout; }
 TT ostream &operator<<(ostream &cout,const VT &a) { int n=a.size(); if (!n) RET cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; RET cout; }
 TT basic_string<T1> operator*(const basic_string<T1> &s,int m) { auto r=s; m*=s.size(); r.resize(m); for (int i=s.size(); i<m; i++) r[i]=r[i-s.size()]; RET r; }
 
 TT UNUSED VT range(T1 l,T1 r,T1 step=1) { assert(step>0); int n=(r-l+step-1)/step,i; VT res(n); for (i=0; i<n; i++) res[i]=l+step*i; RET res; }
 TT UNUSED VPF(T1) ZIP(T1 &a, T1 &b){ll n = min(a.size(), b.size()); VPF(T1) v(n, {"",""}); REP(n){v[i].FI=a[i]; v[i].SE=b[i];} RET v; }
 TT UNUSED T1 pop(VT &v){T1 tmp = v[v.size()-1]; v.POP(); RET tmp;}
-
+TT T1 OR(T1&x,T1&y){return x?x:y;}
 
 
 UNUSED ld frac(ld a){RET a-floor(a);}
@@ -83,5 +84,23 @@ int main(){
 }
 
 void solve(){
-    
+    int n, m, x=0, y=0; 
+    cin >> n >> m; VI counter(n+1);
+    map<int, int> mp; mp.insert({1,0});
+    REP(m){
+        int a, b;
+        cin >> a >> b;
+        counter[a]++;counter[b]++;
+    }
+    FOR(c,counter){
+        if (c<1) continue;
+        if(mp.count(c))mp[c]++;
+        else mp.insert({c,1});
+    }
+    FOR(c,mp){
+        if(c.FI==1) continue;
+        if(c.SE==1) x = c.FI;
+        else y = c.FI;
+    }
+    cout << OR(x,y) << ' ' << OR(y,x)-1 << '\n'; 
 }

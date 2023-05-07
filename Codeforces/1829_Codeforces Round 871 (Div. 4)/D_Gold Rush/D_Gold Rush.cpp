@@ -35,7 +35,8 @@ UNUSED uniform_real_distribution<> pp(0.0,1.0);
 #define VTT VF(PTT)
 #define VT VF(T1)
 #define VI VF(ll)
-#define VD VF(ld)
+#define VD VF(double)
+#define VLD VF(ld)
 #define VS VF(string)
 #define VSS VF(PSS)
 
@@ -83,5 +84,13 @@ int main(){
 }
 
 void solve(){
-    
+    VD stk(1); double a, b;
+    cin >> a >> stk;
+    while(!stk.empty()){
+        b = pop(stk);
+        if(a==b){YES(); RET;}
+        if(b>a || frac(b)!=0) continue;
+        stk.PUSH(b*1.5); stk.PUSH(b*3);
+    }
+    NO();
 }

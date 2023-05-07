@@ -5,37 +5,22 @@ from functools import reduce
 from io import BytesIO,IOBase
 from collections import Counter
 
-#---------------------------- MAIN CODE -----------------------------#
-def solve():
-    _, m = invr()
-    s = Counter()
-    for _ in range(m): 
-        a, b = invr()
-        s[a]+=1; s[b]+=1
-    x = Counter(s.values()).most_common()
-    print(f'{x[-1][0]} {x[-2][0]-1 or x[-1][0]-1}')
-
-
-#---------------------------- END CODE -----------------------------#
-
-
-
-# ''' # REGION FASTIO   1.7 sec average INTEST 
+# ''' # REGION FASTIO   1.7 sec average INTEST    -   best for Codeforces
 BUFSIZ=8192
 class FastIO(IOBase):
     newlines=0
     def __init__(self,file):
         self._fd=file.fileno()
         self.buffer=BytesIO()
-        self.writable="n"in file.mode or "r" not in file.mode # type: ignore
-        self.write=self.buffer.write if self.writable else None # type: ignore
+        self.writable="n"in file.mode or "r" not in file.mode
+        self.write=self.buffer.write if self.writable else None
     def read(self):
         while True:
             b=os.read(self._fd,max(os.fstat(self._fd).st_size,BUFSIZ))
             if not b:
                 break
             ptr=self.buffer.tell()
-            _=self.buffer.seek(0,2),self.buffer.write(b),self.buffer.seek(ptr)
+            self.buffer.seek(0,2),self.buffer.write(b),self.buffer.seek(ptr)
         self.newlines=0
         return self.buffer.read()
     def readline(self):
@@ -43,13 +28,13 @@ class FastIO(IOBase):
             b=os.read(self._fd,max(os.fstat(self._fd).st_size, BUFSIZ))
             self.newlines=b.count(b"\n")+(not b)
             ptr=self.buffer.tell()
-            _=self.buffer.seek(0, 2),self.buffer.write(b),self.buffer.seek(ptr)
+            self.buffer.seek(0, 2),self.buffer.write(b),self.buffer.seek(ptr)
         self.newlines-=1
         return self.buffer.readline()
     def flush(self):
         if self.writable:
             os.write(self._fd,self.buffer.getvalue())
-            _=self.buffer.truncate(0),self.buffer.seek(0)
+            self.buffer.truncate(0),self.buffer.seek(0)
 class IOWrapper(IOBase):
     def __init__(self, file):
         self.buffer=FastIO(file)
@@ -57,28 +42,32 @@ class IOWrapper(IOBase):
         self.writable=self.buffer.writable
         self.write=lambda s:self.buffer.write(s.encode("ascii"))
         self.read=lambda:self.buffer.read().decode("ascii")
-        self.readline=lambda:self.buffer.readline().decode("ascii") # type: ignore
+        self.readline=lambda:self.buffer.readline().decode("ascii")
 if sys.version_info[0]<3:
     sys.stdin,sys.stdout=FastIO(sys.stdin),FastIO(sys.stdout)
 else:
     sys.stdin,sys.stdout=IOWrapper(sys.stdin),IOWrapper(sys.stdout)
+
 input=lambda:sys.stdin.readline().rstrip("\r\n")
+
 inp = lambda: int(input())
 invr = lambda: map(int,input().split())
 invrs = lambda: map(lambda x: x, input().split())
 infn = lambda fn: map(fn, input().split())
 inlt = lambda: list(map(int, input().split()))
 inlts = lambda: list(input())
+
 def print_rev(seq, sep = '', end = '') -> None:
     for i in range(len(seq)): print(seq[~i], sep = sep, end = end)
+
 def print_yn(value: bool, **kwargs) -> None: 
     print(("NO", "YES")[value], **kwargs)
-#---------------------------- REGION END --------------------------#
+#----------------------------- REGION END -------------------------#
 
-#------------------------------ Funcs -----------------------------#
-#                                                                  #
-#            https://github.com/cheran-senthil/PyRival             #
-#                                                                  #
+#-----------------------------Funcs--------------------------------#
+#
+#           https://github.com/cheran-senthil/PyRival
+#
 ########################## GCD/LCM #################################
 gcd = math.gcd
 
@@ -341,48 +330,34 @@ def modinv(a, m):
 
 #----------------------------- REGION END -----------------------------#
 
-#-------------------------------- DOCS --------------------------------#
-''' 
-gcd(x, y), gcdm(*args) : greatest common divisor of x and y 
-lcm(x, y), lcmm(*args) : lcm of x and y 
-extended_gcd(a, b): Returns gcd(a, b), s, r s.t. a * s + b * r == gcd(a, b) 
-
-memodict(f): memoization decorator for a function taking a single argument 
-pollard_rho(n): Returns a random factor of n 
-prime_factors(n) @ memodict : Returns a Counter of the prime factorization of n 
-distinct_factors(n): Returns a list of all distinct factors of n 
-all_factors(n): Returns a sorted list of all distinct factors of n 
-
-fft(a, inv = False), fft_conv(a, b) : FFT
-
-prime_sieve(n): Returns a sieve of primes >= 5 and < n, Sieve of Eratosthenes 
-prime_list(n): Returns a list of primes <= n 
-is_prime(n): Returns True if n is prime else False, MRP-Test 
-
-chinese_remainder(a, p): Returns x s.t. x = a[i] (mod p[i]) where p[i] is prime for all i 
-composite_crt(b, m): Returns x s.t. x = b[i] (mod m[i]) for all i 
-
-discrete_log(a, b, mod): Returns smallest x > 0 s.t. pow(a, x, mod) == b or None if no such x exists.
-
-ilog(n): Returns the smallest a, b s.t. a**b = n for integer a, b 
-primitive_root(p): Returns a primitive root of p 
-
-phi(n): Returns euler's phi(x) for all x <= n 
-modinv(a, m): Returns the modular inverse of a w.r.t. to m, works when a and m are coprime 
-
-inp() : For taking integer inputs. 
-invr() : For taking space seperated integer variable inputs 
-invrs() : For taking space seperated string variable inputs 
-inlt(): List of space seperated integer variable inputs 
-inlts(): List of space seperated string variable inputs 
-infn(fn) : map(fn, input().split())
-
-print_rev(seq: iterable): prints the sequence in reverse
-print_yn(value: bool, **kwargs): print(("NO", "YES")[bool], **kwargs)
-'''
-#----------------------------- DOCS END -------------------------------#
 
 
-#---------------------------- DRIVER CODE -----------------------------#
-if __name__ == "__main__": 
-    for _ in range(inp()): solve()
+
+
+#----------------------------- MAIN CODE ------------------------------#
+def helper(i, j, arr, seen):
+    stack = [(i, j)]
+    volume = 0
+    while stack:
+        i, j = stack.pop()
+        if (i < 0 or i >= len(arr) or j < 0 or j >= len(arr[0])
+            ) or (arr[i][j] == 0 or seen[i][j]): continue
+        seen[i][j] = True
+        volume += arr[i][j]
+        stack.append((i+1, j))
+        stack.append((i-1, j))
+        stack.append((i, j+1))
+        stack.append((i, j-1))
+    return volume
+
+for _ in range(inp()):
+    n, m = invr()
+    arr = [inlt() for _ in range(n)]
+    vol = 0
+    seen = [[False] * len(arr[0]) for _ in range(len(arr))]
+    for i in range(len(arr)):
+        for j in range(len(arr[0])):
+            if arr[i][j] > 0 and not seen[i][j]:
+                volume = helper(i, j, arr, seen)
+                vol = max(vol, volume)
+    print(vol)
