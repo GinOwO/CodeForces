@@ -201,7 +201,8 @@ def fft_conv(a, b):
     a.extend([0.0] * (n - len(a)))
     b.extend([0.0] * (n - len(b)))
 
-    fft(a), fft(b)
+    _=fft(a), fft(b)
+    del _
     for i in range(n):
         a[i] *= b[i]
     fft(a, True)
