@@ -1,0 +1,8 @@
+CodeForces.code-workspace
+contest_io_only.py
+codeforces.py
+grounds.py
+CMakeLists.txt
+cmake-build-debug/
+.idea/
+__pycache__/
