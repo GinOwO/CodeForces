@@ -67,8 +67,8 @@ TT basic_string<T1> operator*(const basic_string<T1> &s,int m) { auto r=s; m*=s.
 TT UNUSED VT range(T1 l,T1 r,T1 step=1) { assert(step>0); int n=(r-l+step-1)/step,i; VT res(n); for (i=0; i<n; i++) res[i]=l+step*i; RET res; }
 TT UNUSED VPF(T1) ZIP(T1 &a, T1 &b){ll n = min(a.size(), b.size()); VPF(T1) v(n, {"",""}); REP(n){v[i].FI=a[i]; v[i].SE=b[i];} RET v; }
 TT UNUSED T1 pop(VT &v){T1 tmp = v[v.size()-1]; v.POP(); RET tmp;}
-
-
+TT UNUSED void cmin(T1&a,T1&b){if(a>b)a=b;}
+TT UNUSED void cmax(T1&a,T1&b){if(a<b)a=b;}
 
 UNUSED ld frac(ld a){RET a-floor(a);}
 UNUSED const ll inf=1e18;

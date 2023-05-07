@@ -16,9 +16,9 @@ using namespace std;
 #define UNUSED [[maybe_unused]]
 UNUSED mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 UNUSED uniform_real_distribution<> pp(0.0,1.0);
-#define ll long long
-#define ull unsigned ll
-#define ld long double
+typedef long long ll;
+typedef unsigned long long ull;
+typedef long double ld;
 
 #define PF(T) pair<T,T>
 #define PTTF(a,b) pair<a,b>
@@ -67,8 +67,8 @@ TT basic_string<T1> operator*(const basic_string<T1> &s,int m) { auto r=s; m*=s.
 TT UNUSED VT range(T1 l,T1 r,T1 step=1) { assert(step>0); int n=(r-l+step-1)/step,i; VT res(n); for (i=0; i<n; i++) res[i]=l+step*i; RET res; }
 TT UNUSED VPF(T1) ZIP(T1 &a, T1 &b){ll n = min(a.size(), b.size()); VPF(T1) v(n, {"",""}); REP(n){v[i].FI=a[i]; v[i].SE=b[i];} RET v; }
 TT UNUSED T1 pop(VT &v){T1 tmp = v[v.size()-1]; v.POP(); RET tmp;}
-
-
+TT UNUSED void cmin(T1&a,T1&b){if(a>b)a=b;}
+TT UNUSED void cmax(T1&a,T1&b){if(a<b)a=b;}
 
 UNUSED ld frac(ld a){RET a-floor(a);}
 UNUSED const ll inf=1e18;
@@ -83,5 +83,16 @@ int main(){
 }
 
 void solve(){
-    
+    ull t; string s;
+    int n; cin >> n;
+    ull best[3] = {inf,inf,inf};
+    REP(n){
+        cin >> t >> s;
+        if (s == "11") cmin(best[0],t);
+        if (s == "10") cmin(best[1],t);
+        if (s == "01") cmin(best[2],t);
+    }
+    ull m = min(best[0],best[1]+best[2]);
+    if(m==inf) cout<<"-1\n";
+    else cout << m << '\n';
 }
