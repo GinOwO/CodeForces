@@ -83,5 +83,10 @@ int main(){
 }
 
 void solve(){
-    
+    int n; cin>>n;
+    if(n>1 && n&1)cout<<"-1";
+    else if(n==1)cout<<'1';
+    else if(n==2)cout<<"1 2";
+    else REPs(0,n,2) cout << 2+i << ' ' << i+1 << ' ';
+    cout<<'\n';
 }

@@ -39,6 +39,7 @@ UNUSED uniform_real_distribution<> pp(0.0,1.0);
 #define VS VF(string)
 #define VSS VF(PSS)
 
+
 #define FI first
 #define SE second
 #define PUSH push_back
@@ -52,7 +53,6 @@ UNUSED uniform_real_distribution<> pp(0.0,1.0);
 #define TT template<typename T1>
 
 #define REPk(k, n) for(int i=k; i<n; i++)
-#define REPs(k, n, s) for(int i=k; i<n; i+=s)
 #define REP(n) REPk(0, n)
 #define FOR(var,seq) for(auto&var:seq)
 
