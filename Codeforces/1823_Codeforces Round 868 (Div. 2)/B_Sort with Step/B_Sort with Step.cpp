@@ -91,5 +91,9 @@ int main(){
 }
 
 void solve(){
-    
+    int n, k, c=0; cin >> n >> k;
+    VI v(n); cin >> v;
+    REP(n) c+=((v[i]-1)%k!=i%k);
+    if(c==0||c==2) cout<<c/2<<'\n';
+    else cout<<"-1\n";
 }

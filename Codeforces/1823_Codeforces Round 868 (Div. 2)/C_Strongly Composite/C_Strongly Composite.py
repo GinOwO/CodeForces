@@ -7,7 +7,7 @@ from collections import Counter
 
 #---------------------------- MAIN CODE -----------------------------#
 def solve():
-    pass
+    prime_factors(inp())
 
 
 #---------------------------- END CODE -----------------------------#

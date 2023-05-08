@@ -83,8 +83,5 @@ int main(){
 }
 
 void solve(){
-    string a, b = "codeforces"; cin >> a; 
-    ll count = 0;
-    FOR(c,ZIP(a, b)) count+=c.FI!=c.SE;
-    cout<<count<<"\n";
+    
 }

@@ -90,6 +90,25 @@ int main(){
     int t; cin >> t; while(t--) solve(); RET 0;
 }
 
+#define f(x) (((x-1)*x)/2 + (n-x-1)*(n-x)/2)
+string s = "1 ", s1 = "-1 ";
 void solve(){
+    int n, k; cin >> n >> k;
+    REP(n) if(f(i)==k){
+        cout << "YES\n" << s*i << s1*(n-i) << '\n'; RET;
+    }
+    NO();
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
