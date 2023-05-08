@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "CPP: current file",
+            "name": "CPP: Current File",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
-            "args": ["<", "input.txt"],
+            "args": ["<", "${fileDirname}/input/input0.txt"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -22,6 +22,15 @@
                 },
             ],
             "preLaunchTask": "cppbuild"
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["<", "${fileDirname}/input/input0.txt"],
         },
         {
             "name": "CPP: main.cpp",
@@ -54,3 +63,4 @@
         }
     ]
 }
+
