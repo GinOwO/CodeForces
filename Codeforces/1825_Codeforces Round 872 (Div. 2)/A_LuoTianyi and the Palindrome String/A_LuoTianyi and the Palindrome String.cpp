@@ -53,6 +53,7 @@ typedef VF(PSS) VSS;
 #define BIT_SET(a,b) ((a) |= (1ULL<<(b)))
 #define BIT_CLEAR(a,b) ((a) &= ~(1ULL<<(b)))
 #define BIT_FLIP(a,b) ((a) ^= (1ULL<<(b)))
+
 // '!!' to make sure this returns 0 or 1
 #define BIT_CHECK(a,b) (!!((a) & (1ULL<<(b))))
 
@@ -72,7 +73,7 @@ TT basic_string<T> operator*(const basic_string<T> &s,int m) { auto r=s; m*=s.si
 
 TT UNUSED VPF(T) ZIP(T &a, T &b){ll n = min(a.size(), b.size()); VPF(T) v(n, {"",""}); REP(n){v[i].first=a[i]; v[i].second=b[i];} RET v; } //Python style ZIP
 TT UNUSED T pop(VT &v){T tmp = v[v.size()-1]; v.pop_back(); RET tmp;} //Python style pop: returns value on pop
-TT UNUSED T OR(T&x,T&y){return x?x:y;}; TT UNUSED T AND(T&x,T&y){return x?y:x;} //Python style and/or
+TT UNUSED T OR(T x,T y){return x?x:y;}; TT UNUSED T AND(T&x,T&y){return x?y:x;} //Python style and/or
 TT UNUSED void cmin(T&x,T y){if(x>y)x=y;}; TT UNUSED void cmax(T&x,T y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
 //MATH
 UNUSED ull ncr(ll n, ll r){if(n<1||r<1||r>=n) RET 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;RET k;}
@@ -80,16 +81,17 @@ UNUSED bool isPrime(ll&n){if(n<2||(n%2&&n!=2))RET false;REPs(3,sqrt(n)+1,2) if(n
 UNUSED ld frac(ld&a){RET a-floor(a);} //Fractional part function
 TT UNUSED T gcd(T&a,T&b){RET b?__gcd(a,b):a;}
 TT UNUSED T lcm(T&a,T&b){RET a*b/gcd(a,b);}
-
-void solve();
+int solve();
 
 int main(){
     ios::sync_with_stdio(false);
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr); cout.tie(nullptr);
-    int t; cin >> t; while(t--) solve(); RET 0;
+    int t; cin >> t; while(t--) cout << solve() << '\n'; RET 0;
 }
 
-void solve(){
-    
+int solve(){
+    string s; cin>>s; bool p=false;
+    FOR(c,s) if(c!=s[0]){p=true;break;}
+    RET p*s.size()-1;
 }

@@ -53,6 +53,7 @@ typedef VF(PSS) VSS;
 #define BIT_SET(a,b) ((a) |= (1ULL<<(b)))
 #define BIT_CLEAR(a,b) ((a) &= ~(1ULL<<(b)))
 #define BIT_FLIP(a,b) ((a) ^= (1ULL<<(b)))
+
 // '!!' to make sure this returns 0 or 1
 #define BIT_CHECK(a,b) (!!((a) & (1ULL<<(b))))
 
@@ -80,7 +81,6 @@ UNUSED bool isPrime(ll&n){if(n<2||(n%2&&n!=2))RET false;REPs(3,sqrt(n)+1,2) if(n
 UNUSED ld frac(ld&a){RET a-floor(a);} //Fractional part function
 TT UNUSED T gcd(T&a,T&b){RET b?__gcd(a,b):a;}
 TT UNUSED T lcm(T&a,T&b){RET a*b/gcd(a,b);}
-
 void solve();
 
 int main(){
