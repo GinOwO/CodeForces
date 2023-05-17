@@ -91,18 +91,18 @@ int main(){
 }
 
 void solve() {
-    int n, count = 1;cin >> n;
-    VI arr(n); cin >> arr;
-    if(n==1) cout<<"1\n";
-    else if(n==2) (arr[0]==arr[1])?cout<<"1\n":cout<<"2\n";
+    int n, a, b, c; cin >> n>>a;
+    if(n<2) {cout<<n<<'\n'; RET;}
+    cin>>b;
+    if(n==2) (a==b)?cout<<"1\n":cout<<"2\n";
     else{
-    int prev=0, cur=1, next=2;
-    for(;next<n;cur=next++){
-        int a = abs(arr[prev] - arr[cur]), b = abs(arr[cur] - arr[next]), c = abs(arr[prev] - arr[next]);
-        if(a+b!=c){
-            count++;prev=cur;
+        REPk(2-n,0){
+            cin>>c;
+            if((a<=b&&b<=c)||(a>=b&&b>=c)) n--;
+            else a=b;
+            b=c;
         }
-    }
-    cout << count << '\n';
+        if(n==2&&a==b) cout<<"1\n";
+        else cout << n << '\n';
     }
 }
