@@ -53,9 +53,7 @@ typedef VF(PSS) VSS;
 #define BIT_SET(a,b) ((a) |= (1ULL<<(b)))
 #define BIT_CLEAR(a,b) ((a) &= ~(1ULL<<(b)))
 #define BIT_FLIP(a,b) ((a) ^= (1ULL<<(b)))
-
-// '!!' to make sure this returns 0 or 1
-#define BIT_CHECK(a,b) (!!((a) & (1ULL<<(b))))
+#define BIT_CHECK(a,b) (!!((a) & (1ULL<<(b))))// '!!' to make sure this returns 0 or 1
 
 #define BITMASK_SET(x, mask) ((x) |= (mask))
 #define BITMASK_CLEAR(x, mask) ((x) &= (~(mask)))
@@ -71,6 +69,7 @@ TTT ostream &operator<<(UNUSED ostream &cout,UNUSED const VTT &a) { FOR(c,a) cou
 TT ostream &operator<<(ostream &cout,const VT &a) { int n=a.size(); if (!n) RET cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; RET cout; }
 TT basic_string<T> operator*(const basic_string<T> &s,int m) { auto r=s; m*=s.size(); r.resize(m); for (int i=s.size(); i<m; i++) r[i]=r[i-s.size()]; RET r; }
 
+TT UNUSED int len(T&x){RET x.size();}
 TT UNUSED VPF(T) ZIP(T &a, T &b){ll n = min(a.size(), b.size()); VPF(T) v(n, {"",""}); REP(n){v[i].first=a[i]; v[i].second=b[i];} RET v; } //Python style ZIP
 TT UNUSED T pop(VT &v){T tmp = v[v.size()-1]; v.pop_back(); RET tmp;} //Python style pop: returns value on pop
 TT UNUSED T OR(T&x,T&y){return x?x:y;}; TT UNUSED T AND(T&x,T&y){return x?y:x;} //Python style and/or
@@ -81,6 +80,7 @@ UNUSED bool isPrime(ll&n){if(n<2||(n%2&&n!=2))RET false;REPs(3,sqrt(n)+1,2) if(n
 UNUSED ld frac(ld&a){RET a-floor(a);} //Fractional part function
 TT UNUSED T gcd(T&a,T&b){RET b?__gcd(a,b):a;}
 TT UNUSED T lcm(T&a,T&b){RET a*b/gcd(a,b);}
+
 void solve();
 
 int main(){
@@ -90,7 +90,10 @@ int main(){
     int t; cin >> t; while(t--) solve(); RET 0;
 }
 
-void solve() {
-    string x; cin>>x;
-    cout << x;
+void solve(){
+    int n; cin >> n;
+    int r = (n*(n+1)/2)%n;
+    cout << 1+(r*(r!=0)) << ' ';
+    REPk(2,n+1) cout << i << ' ';
+    cout << '\n';
 }
