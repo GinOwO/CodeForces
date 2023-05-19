@@ -92,17 +92,15 @@ int main(){
 
 void solve(){
     int n, k; cin >> n >> k;
-    VI a(n), b(n); cin >> a >> b;
-    VI sa(a); 
+    VI a(n), b(n); cin >> a >> b; VI sa(a); 
     sort(sa.begin(), sa.end());
     sort(b.begin(), b.end());
     unordered_map<int, VI> m;
     REP(n){
-        if (!m.count(sa[n-i-1])) m[sa[n-i-1]] = {};
-        m[sa[n-i-1]].push_back(b[n-i-1]);
+        if (!m.count(sa[n+~i])) m[sa[n+~i]] = {};
+        m[sa[n+~i]].push_back(b[n+~i]);
     }
-    FOR(c,a)
-        cout << pop(m[c]) << " ";
+    FOR(c,a) cout << pop(m[c]) << " ";
     
 
     cout << '\n';
