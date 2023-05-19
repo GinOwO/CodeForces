@@ -94,9 +94,6 @@ void solve(){
     int n; string s;
     cin >> n >> s;
     unordered_set<string> x;
-    
-    REP(n-1) 
-        x.insert(s.substr(i,2));
+    REP(n-1) x.insert(s.substr(i,2));
     cout << x.size() << '\n';
-    
 }
