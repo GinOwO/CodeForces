@@ -17,7 +17,7 @@
             "command": "g++",
             "args": [
                 "-g", "\"${relativeFile}\"",
-                "-o", "${relativeFileDirname}/${fileBasenameNoExtension}.exe"
+                "-o", "\"${relativeFileDirname}/${fileBasenameNoExtension}.exe\""
             ],
             "group": "build"
         }
