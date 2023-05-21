@@ -1,9 +1,9 @@
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshadow"
 #pragma ide diagnostic ignored "OCUnusedMacroInspection"
 #pragma ide diagnostic ignored "modernize-use-emplace"
-#ifndef _DEBUG
 #pragma GCC optimize("Ofast,unroll-loops") 
 #pragma GCC target("avx,avx2,fma") 
-#endif
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -72,7 +72,7 @@ TT basic_string<T> operator*(const basic_string<T> &s,int m) { auto r=s; m*=s.si
 TT UNUSED int len(T&x){RET x.size();}
 TT UNUSED VPF(T) ZIP(T &a, T &b){ll n = min(a.size(), b.size()); VPF(T) v(n, {"",""}); REP(n){v[i].first=a[i]; v[i].second=b[i];} RET v; } //Python style ZIP
 TT UNUSED T pop(VT &v){T tmp = v[v.size()-1]; v.pop_back(); RET tmp;} //Python style pop: returns value on pop
-TT UNUSED T OR(T x,T y){return x?x:y;}; TT UNUSED T AND(T x,T y){return x?y:x;} //Python style and/or
+TT UNUSED T OR(T&x,T&y){return x?x:y;}; TT UNUSED T AND(T&x,T&y){return x?y:x;} //Python style and/or
 TT UNUSED void cmin(T&x,T y){if(x>y)x=y;}; TT UNUSED void cmax(T&x,T y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
 //MATH
 UNUSED ull ncr(ll n, ll r){if(n<1||r<1||r>=n) RET 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;RET k;}
@@ -91,5 +91,13 @@ int main(){
 }
 
 void solve(){
-    
+    int a, b; cin>>a>>b;
+    int y = 0, x = 0, alt = 1, count=abs(a)>=abs(b);
+    while(x!=a || y!=b){
+        if (alt) x += (x>a)?-1:(x<a)?1:0;
+        else y += (y>b)?-1:(y<b)?1:0;
+        count++;
+        alt = !alt;
+    }
+    cout << count-1 << '\n';
 }

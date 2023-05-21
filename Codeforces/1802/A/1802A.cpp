@@ -1,9 +1,9 @@
 #pragma ide diagnostic ignored "OCUnusedMacroInspection"
 #pragma ide diagnostic ignored "modernize-use-emplace"
 #ifndef _DEBUG
-#pragma GCC optimize("Ofast,unroll-loops") 
-#pragma GCC target("avx,avx2,fma") 
+#pragma GCC optimize("O0,unroll-loops") 
 #endif
+#pragma GCC target("avx,avx2,fma") 
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -72,7 +72,7 @@ TT basic_string<T> operator*(const basic_string<T> &s,int m) { auto r=s; m*=s.si
 TT UNUSED int len(T&x){RET x.size();}
 TT UNUSED VPF(T) ZIP(T &a, T &b){ll n = min(a.size(), b.size()); VPF(T) v(n, {"",""}); REP(n){v[i].first=a[i]; v[i].second=b[i];} RET v; } //Python style ZIP
 TT UNUSED T pop(VT &v){T tmp = v[v.size()-1]; v.pop_back(); RET tmp;} //Python style pop: returns value on pop
-TT UNUSED T OR(T x,T y){return x?x:y;}; TT UNUSED T AND(T x,T y){return x?y:x;} //Python style and/or
+TT UNUSED T OR(T&x,T&y){return x?x:y;}; TT UNUSED T AND(T&x,T&y){return x?y:x;} //Python style and/or
 TT UNUSED void cmin(T&x,T y){if(x>y)x=y;}; TT UNUSED void cmax(T&x,T y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
 //MATH
 UNUSED ull ncr(ll n, ll r){if(n<1||r<1||r>=n) RET 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;RET k;}
@@ -90,6 +90,20 @@ int main(){
     int t; cin >> t; while(t--) solve(); RET 0;
 }
 
+#define xy (const auto&x, const auto&y)
+
 void solve(){
-    
+    int n; cin >> n;
+    VI arr(n); cin>>arr;
+    int neg=0, pos=0;
+    FOR(i,arr) (i<0)?neg++:pos++;
+    REPk(1,pos+1) cout << i << ' ';
+    for(int i=pos-1,j=neg;j>0;j--,i--) cout << i << ' ';
+    cout << '\n';
+    for(int i=1; neg>0;i=!i){
+        i?pos--:neg--;
+        cout << i << ' ';
+    }
+    for(int i=1; pos>0;pos--,i++) cout << i << ' ';
+    cout << '\n';
 }

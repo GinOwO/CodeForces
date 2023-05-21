@@ -91,5 +91,15 @@ int main(){
 }
 
 void solve(){
-    
+    int p=0, a=0, k=0, n;
+    cin>>n; VI arr(n); cin>>arr;
+    FOR(i,arr){
+        if(i==1) p++;
+        else{
+            k += p;
+            p = 0;
+        }
+        cmax(a, p+(k?k/2+1:0));
+    }
+    cout << a << '\n';
 }

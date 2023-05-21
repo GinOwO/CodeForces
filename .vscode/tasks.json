@@ -7,7 +7,8 @@
             "command": "g++",
             "args": [
                 "-g", "main.cpp",
-                "-o", "main.exe"
+                "-o", "main.exe",
+                "-static"
             ],
             "group": "build"
         },
@@ -17,7 +18,8 @@
             "command": "g++",
             "args": [
                 "-g", "\"${relativeFile}\"",
-                "-o", "\"${relativeFileDirname}/${fileBasenameNoExtension}.exe\""
+                "-o", "main.exe",
+                "-static"
             ],
             "group": "build"
         }

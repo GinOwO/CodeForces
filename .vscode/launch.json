@@ -5,7 +5,7 @@
             "name": "CPP: Current File",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "program": "${workspaceFolder}/main.exe",
             "args": ["<", "${fileDirname}/input/input0.txt"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -59,13 +59,13 @@
             "args":["<", "input.txt"]
         },
         {
-            "name": "CPP: Current File(alt)",
+            "name": "CPP: (alt)Current File",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "program": "${workspaceFolder}/main.exe",
             "args": ["<", "${fileDirname}/input.txt"],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             
