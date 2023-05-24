@@ -92,14 +92,10 @@ int main(){
 
 void solve(){
     int n, k, rem[2]={0}, MIN, MAX; cin >> n >> k;
-    VI arr(n); cin >> arr; ll sum=0;
+    VI arr(n); cin >> arr;
     sort(arr.begin(), arr.end());
-    REP(k){
-        MIN = arr[rem[0]*2]+arr[rem[0]*2+1];
-        MAX = arr[n-rem[1]-1];
-        if (MIN>=MAX) rem[1]++;
-        else rem[0]++;
-    }
-    REPk(rem[0]*2,n-rem[1]) sum+=arr[i];
-    cout<<sum << '\n';
+    VI prefix(2*n+1,0); ll sum=0;
+    REP(n) prefix[i+1] = prefix[i]+arr[i];
+    REP(n+1) cmax(sum,prefix[n-k+i]-prefix[2*i]);
+    cout << sum << '\n';
 }

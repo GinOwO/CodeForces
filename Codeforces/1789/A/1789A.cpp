@@ -1,9 +1,7 @@
 #pragma ide diagnostic ignored "OCUnusedMacroInspection"
 #pragma ide diagnostic ignored "modernize-use-emplace"
-#ifndef _DEBUG
 #pragma GCC optimize("Ofast,unroll-loops") 
 #pragma GCC target("avx,avx2,fma") 
-#endif
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -76,7 +74,7 @@ TT UNUSED T OR(T x,T y){return x?x:y;}; TT UNUSED T AND(T x,T y){return x?y:x;} 
 TT UNUSED void cmin(T&x,T y){if(x>y)x=y;}; TT UNUSED void cmax(T&x,T y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
 //MATH
 UNUSED ull ncr(ll n, ll r){if(n<1||r<1||r>=n) RET 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;RET k;}
-UNUSED bool isPrime(ll n){if(n<3||n%2==0)RET n==2;REPs(3,sqrt(n)+1,2)if(n%i==0)RET false;RET true;}
+UNUSED bool isPrime(ll n){if(n<3||(n&1)==0)RET n==2;REPs(3,sqrt(n)+1,2)if(n%i==0)RET false;RET true;}
 UNUSED ld frac(ld&a){RET a-floor(a);} //Fractional part function
 TT UNUSED T gcd(T&a,T&b){RET b?__gcd(a,b):a;}
 TT UNUSED T lcm(T&a,T&b){RET a*b/gcd(a,b);}
@@ -91,5 +89,11 @@ int main(){
 }
 
 void solve(){
-    
+    int n; cin >> n;
+    VI arr(n); cin >> arr;
+    REP(n) for(int j=i+1;j<n;j++)if(gcd(arr[i], arr[j])<=2){
+        YES(); 
+        return;
+    }
+    NO();
 }
