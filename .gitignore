@@ -5,6 +5,7 @@ CMakeLists.txt
 cmake-build-debug/
 .idea/
 __pycache__/
+main.exe
 *.code-workspace
 
 # Prerequisites
