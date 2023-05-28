@@ -4,23 +4,24 @@
         {
             "label": "cppbuild main",
             "type": "shell",
-            "command": "g++",
+            "command": "/usr/bin/g++",
             "args": [
                 "-g", "main.cpp",
                 "-o", "main.exe",
-                "-static"
             ],
+            "problemMatcher": ["$gcc"],
             "group": "build"
+            
         },
         {
             "label": "cppbuild",
             "type": "shell",
-            "command": "g++",
+            "command": "/usr/bin/g++",
             "args": [
                 "-g", "\"${relativeFile}\"",
                 "-o", "main.exe",
-                "-static"
             ],
+            "problemMatcher": ["$gcc"],
             "group": "build"
         }
     ]
