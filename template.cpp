@@ -12,6 +12,8 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
+#define int ll
+#define all(x) x.begin(), x.end()
 UNUSED const ll inf=1e18;
 UNUSED const int mod=998244353;
 UNUSED const int mod2=1e9+7;
@@ -83,7 +85,7 @@ TT UNUSED T lcm(T&a,T&b){RET a*b/gcd(a,b);}
 
 void solve();
 
-int main(){
+signed main(){
     ios::sync_with_stdio(false);
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr); cout.tie(nullptr);
