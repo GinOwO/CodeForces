@@ -98,14 +98,14 @@ void solve(){
     ll l=0, r=inf, res=0;
 
     while(r>=l){
-        ll mid = l + (r-l)/2;
+        ll mid = (r+l)>>1;
         int k=0, c=0;
-        REP(n) if (arr[i]-arr[k]>2*mid){
+        REP(n) if (arr[i]-arr[k]>mid){
             k=i; 
             c++;
         }
         if(c>=3) l=mid+1;
-        else r = (res=mid)-1;
+        else r = mid-1, res=(mid>>1) + (mid&1);
     }
     
     cout << res << '\n';
