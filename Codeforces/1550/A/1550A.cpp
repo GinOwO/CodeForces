@@ -93,11 +93,5 @@ signed main(){
 }
 
 void solve(){
-    int n; cin>>n;
-    double a=-inf, b=0, t;
-    REP(n){
-        cin>>t;
-        b+=t; cmax(a,t);
-    }
-    cout << fixed << a+(b-a)/(n-1) << '\n';
+    
 }
