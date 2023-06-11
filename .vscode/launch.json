@@ -11,6 +11,8 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -21,15 +23,6 @@
             "preLaunchTask": "cppbuild",
         },
         {
-            "name": "Python: Current File",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true,
-            "args": ["<", "${fileDirname}/input/input0.txt"],
-        },
-        {
             "name": "CPP: main.cpp",
             "type": "cppdbg",
             "request": "launch",
@@ -38,6 +31,8 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
             "externalConsole": false,
             "setupCommands": [
                 {
@@ -49,15 +44,6 @@
             "preLaunchTask": "cppbuild main"
         },
         {
-            "name": "Python: main.py",
-            "type": "python",
-            "request": "launch",
-            "program": "main.py",
-            "console": "integratedTerminal",
-            "justMyCode": true,
-            "args":["<", "input.txt"]
-        },
-        {
             "name": "CPP: (alt)Current File",
             "type": "cppdbg",
             "request": "launch",
@@ -66,6 +52,8 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
             "externalConsole": false,
             "setupCommands": [
                 {
@@ -75,7 +63,25 @@
                 },
             ],
             "preLaunchTask": "cppbuild"
-        }
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["<", "${fileDirname}/input/input0.txt"],
+        },
+        {
+            "name": "Python: main.py",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args":["<", "input.txt"]
+        },
     ]
 }
 
