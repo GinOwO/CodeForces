@@ -4,6 +4,18 @@
         "string": "cpp",
         "vector": "cpp",
         "iostream": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "array": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stacktrace": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp"
     }
 }
