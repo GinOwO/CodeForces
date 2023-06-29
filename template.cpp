@@ -1,8 +1,11 @@
 #pragma ide diagnostic ignored "OCUnusedMacroInspection"
 #pragma ide diagnostic ignored "modernize-use-emplace"
 #ifndef _DEBUG
-#pragma GCC optimize("Ofast,unroll-loops") 
-#pragma GCC target("avx,avx2,fma") 
+    #pragma GCC optimize("Ofast,unroll-loops") 
+    #pragma GCC target("avx,avx2,fma") 
+#endif
+#ifdef _DEBUG
+    #pragma GCC optimize("O0")
 #endif
 
 #include<bits/stdc++.h>
@@ -17,9 +20,11 @@ typedef long double ld;
 UNUSED const ll inf=1e18;
 UNUSED const int mod=998244353;
 UNUSED const int mod2=1e9+7;
+
 //Prefix: V - Vector, P - Pair
 //Suffix: F - Create on type
 //Types: 2 letter = pair, T: template, D: double, I: int, S: string
+
 #define PTTF(T1,T2) pair<T1,T2>
 #define PF(T) PTTF(T,T)
 #define VF(T) vector<T>
@@ -42,14 +47,17 @@ typedef VF(PSS) VSS;
 #define RET return
 #define YES() std::cout << "YES\n"
 #define NO() std::cout << "NO\n"
+
 //TEMPLATE DEFINES
 #define TTT template<typename T,typename T2>
 #define TT template<typename T>
+
 //LOOP STUFF
 #define REPs(k,n,s) for(int i=k; i<n; i+=s)
 #define REPk(k, n) REPs(k,n,1)
 #define REP(n) REPk(0, n)
 #define FOR(var,seq) for(auto&var:seq)
+
 // BITWISE
 /* a=target variable, b=bit number to act upon 0-n */
 #define BIT_SET(a,b) ((a) |= (1ULL<<(b)))
@@ -76,6 +84,7 @@ TT UNUSED VPF(T) ZIP(T &a, T &b){ll n = min(a.size(), b.size()); VPF(T) v(n, {""
 TT UNUSED T pop(VT &v){T tmp = v[v.size()-1]; v.pop_back(); RET tmp;} //Python style pop: returns value on pop
 TT UNUSED T OR(T x,T y){return x?x:y;}; TT UNUSED T AND(T x,T y){return x?y:x;} //Python style and/or
 TT UNUSED void cmin(T&x,T y){if(x>y)x=y;}; TT UNUSED void cmax(T&x,T y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
+
 //MATH
 UNUSED ull ncr(ll n, ll r){if(n<1||r<1||r>=n) RET 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;RET k;}
 UNUSED bool isPrime(ll n){if(n<3||n%2==0)RET n==2;REPs(3,sqrt(n)+1,2)if(n%i==0)RET false;RET true;}
