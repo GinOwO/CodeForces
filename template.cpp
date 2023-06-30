@@ -102,5 +102,5 @@ signed main(){
 }
 
 void solve(){
-    
+     
 }

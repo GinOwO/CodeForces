@@ -100,5 +100,20 @@ signed main(){
 
 
 void solve(){
-
+    string s, l, r; int k; 
+    cin>>s>>k>>l>>r;
+    for(int m=0, j=0;m<k;m++){
+        int a = l[m]-'0', b=r[m]-'0';
+        set<int> notSeen;
+        REPk(a,b+1) notSeen.insert(i);
+        for(;j<s.size();j++){
+            if(notSeen.count(s[j]-'0')) notSeen.erase(s[j]-'0');
+            if(notSeen.empty()) break;
+        }
+        if(j++==s.size()){
+            YES();
+            return;
+        }
+    }
+    NO();
 }
