@@ -6,6 +6,9 @@
             "type": "shell",
             "command": "/usr/bin/g++",
             "args": [
+                "-mavx",
+                "-mavx2",
+                "-mfma",
                 "-g",
                 "main.cpp",
                 "-o",
@@ -21,6 +24,9 @@
             "type": "shell",
             "command": "/usr/bin/g++",
             "args": [
+                "-mavx",
+                "-mavx2",
+                "-mfma",
                 "-g",
                 "\"${relativeFile}\"",
                 "-o",

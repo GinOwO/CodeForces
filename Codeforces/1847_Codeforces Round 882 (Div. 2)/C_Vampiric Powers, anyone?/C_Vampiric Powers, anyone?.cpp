@@ -1,7 +1,7 @@
 #pragma ide diagnostic ignored "OCUnusedMacroInspection"
 #pragma ide diagnostic ignored "modernize-use-emplace"
 #pragma GCC optimize("Ofast,unroll-loops") 
-#pragma GCC target("avx,avx2,fma") 
+#pragma GCC target("avx,avx2,fma")
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -96,6 +96,60 @@ signed main(){
     int t; cin >> t; while(t--) solve(); RET 0;
 }
 
-void solve(){
-     
+class TrieNode {
+public:
+    TrieNode* child[2];
+    TrieNode() {
+        child[0] = child[1] = nullptr;
+    }
+};
+
+void insert(TrieNode* root, int n) {
+    TrieNode* cur = root;
+    for (int i = 7; i >= 0; i--) {
+        int bit = (n >> i) & 1;
+        if (cur->child[bit] == nullptr)
+            cur->child[bit] = new TrieNode();
+        cur = cur->child[bit];
+    }
+}
+
+int findMaxXOR(TrieNode* root, int n) {
+    TrieNode* cur = root;
+    int res = 0;
+    for (int i = 7; i >= 0; i--) {
+        int bit = (n >> i) & 1;
+        int oppositeBit = 1 - bit;
+        if (cur->child[oppositeBit] != nullptr) {
+            res |= (1 << i);
+            cur = cur->child[oppositeBit];
+        } else {
+            cur = cur->child[bit];
+        }
+    }
+    return res;
+}
+
+
+void solve() {
+    int n, res=0, tmp=0; cin >> n;
+    VI arr(n); cin>>arr;
+    // Subarry with longest XOR gives the answer owo
+    // 1st case: 2^5 = 7
+    // 2nd case: 1^2 = 3 
+    // 3rd case: 8^4^2 = 14
+    // As always the explanation for sample test cases is a red herring smh
+    // This is gonna be awkward if I get it wrong
+    // Welp here goes nothing
+    // F, that didnt work, so heres a try with a trie. If this doesnt work then rip me.
+    TrieNode* root = new TrieNode();
+    insert(root, 0);
+    for (int i = 0; i < n; i++) {
+        tmp ^= arr[i];
+        insert(root, tmp);
+        int curMaxXOR = findMaxXOR(root, tmp);
+        res = max(res, curMaxXOR);
+    }
+
+    cout << res << endl;
 }

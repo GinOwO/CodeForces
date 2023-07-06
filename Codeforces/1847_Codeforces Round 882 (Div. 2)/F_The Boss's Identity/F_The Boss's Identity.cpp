@@ -1,7 +1,12 @@
 #pragma ide diagnostic ignored "OCUnusedMacroInspection"
 #pragma ide diagnostic ignored "modernize-use-emplace"
-#pragma GCC optimize("Ofast,unroll-loops") 
-#pragma GCC target("avx,avx2,fma") 
+#ifndef _DEBUG
+    #pragma GCC optimize("Ofast,unroll-loops") 
+    #pragma GCC target("avx,avx2,fma") 
+#endif
+#ifdef _DEBUG
+    #pragma GCC optimize("O0")
+#endif
 
 #include<bits/stdc++.h>
 using namespace std;

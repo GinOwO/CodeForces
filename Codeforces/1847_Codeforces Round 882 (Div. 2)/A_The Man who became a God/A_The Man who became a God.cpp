@@ -1,7 +1,7 @@
 #pragma ide diagnostic ignored "OCUnusedMacroInspection"
 #pragma ide diagnostic ignored "modernize-use-emplace"
 #pragma GCC optimize("Ofast,unroll-loops") 
-#pragma GCC target("avx,avx2,fma") 
+//#pragma GCC target("avx,avx2,fma") 
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -97,5 +97,14 @@ signed main(){
 }
 
 void solve(){
-     
+    int n, k, res=0; cin>>n>>k;
+    if(k>n){
+        cout << "0\n";
+        return;
+    }
+    VI arr(n), arr2; cin>>arr;
+    REP(n-1) arr2.push_back(abs(arr[i+1]-arr[i]));
+    sort(all(arr2), greater<int>());
+    for(int i=n-2; i>k-2; i--) res+=arr2[i];
+    cout << res << '\n';
 }
