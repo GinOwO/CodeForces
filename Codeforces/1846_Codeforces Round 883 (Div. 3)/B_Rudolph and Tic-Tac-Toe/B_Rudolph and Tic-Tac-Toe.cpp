@@ -105,19 +105,16 @@ signed main(){
 
 void solve(){
     VS s(3); cin>>s[0]>>s[1]>>s[2];
-    bool winner = false;
     FOR(row, s)
         if (row[0]==row[1] && row[1]==row[2] && row[2]!='.'){
             cout << row[0] << '\n';
-            winner = true;
+            return;
         }
-    if(winner) return;
     for(int i=0; i<3; i++)
         if(s[0][i]==s[1][i] && s[1][i] == s[2][i] && s[2][i]!='.'){
             cout << s[1][i] << '\n';
-            winner = true;
+            return;
         }
-    if(winner) return;
     if(((s[0][0] == s[1][1] && s[2][2] == s[1][1]) || (s[0][2] == s[1][1] && s[2][0] == s[1][1])) && s[1][1] != '.'){
         cout << s[1][1] << '\n';
     }
