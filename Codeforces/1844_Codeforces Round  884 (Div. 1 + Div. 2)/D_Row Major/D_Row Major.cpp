@@ -104,20 +104,8 @@ signed main(){
 }
 
 void solve(){
-    int n, k; cin>>n;
-    char s;
-    if(n%2 || n==2){
-        REP(n) {
-            s = 'a'+(i%2);
-            cout << s;
-        }
-    }
-    else{
-        for(k=3;k<=26 && !(n%k);k++);
-        REP(n){
-            s = 'a'+(i%k);
-            cout << s;
-        }
-    }
+    int n, k=2; cin>>n;
+    while(k<26&&!(n%k))k++;
+    REP(n)cout<<char('a'+(i%k));
     cout << '\n';
 }

@@ -12,7 +12,8 @@
                 "-g",
                 "main.cpp",
                 "-o",
-                "main.exe"
+                "main.exe",
+                "--std=c++17"
             ],
             "problemMatcher": [
                 "$gcc"
@@ -30,7 +31,8 @@
                 "-g",
                 "\"${relativeFile}\"",
                 "-o",
-                "main.exe"
+                "main.exe",
+                "--std=c++17"
             ],
             "problemMatcher": [
                 "$gcc"

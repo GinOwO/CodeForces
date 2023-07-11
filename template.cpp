@@ -32,7 +32,7 @@ UNUSED const int mod2=1e9+7;
 #define MTTF(T1, T2) map<T1, T2>
 #define MF(T) MTTF(T,T)
 
-#define PTT PTTF(T,T2)
+#define PTT PTTF(T,T1)
 #define VTT VF(PTT)
 #define VT VF(T)
 
@@ -43,14 +43,15 @@ typedef PF(int) PII;
 typedef MF(int) MII;
 typedef MTTF(int, VI) MIV;
 
+//TEMPLATE DEFINES
+#define TTT template<typename T,typename T1>
+#define TT template<typename T>
+#define TTU TT UNUSED
+
 //QoL Functions
 #define all(x) x.begin(), x.end()
 #define YES() std::cout << "YES\n"
 #define NO() std::cout << "NO\n"
-
-//TEMPLATE DEFINES
-#define TTT template<typename T,typename T2>
-#define TT template<typename T>
 
 //LOOP STUFF
 #define REPi(i,k,n,s) for(auto i=k; i<n; i+=s)
@@ -80,18 +81,18 @@ TTT ostream &operator<<(UNUSED ostream &cout,UNUSED const VTT &a) { FOR(c,a) cou
 TT ostream &operator<<(ostream &cout,const VT &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 TT basic_string<T> operator*(const basic_string<T> &s,int m) { auto r=s; m*=s.size(); r.resize(m); for (int i=s.size(); i<m; i++) r[i]=r[i-s.size()]; return r; }
 
-TT UNUSED int len(T&x){return x.size();}
-TT UNUSED VPF(T) ZIP(T &a, T &b){ll n = min(a.size(), b.size()); VPF(T) v(n, {"",""}); REP(n){v[i].first=a[i]; v[i].second=b[i];} return v; } //Python style ZIP
-TT UNUSED T pop(VT &v){T tmp = v[v.size()-1]; v.pop_back(); return tmp;} //Python style pop: returns value on pop
-TT UNUSED T OR(T x,T y){return x?x:y;}; TT UNUSED T AND(T x,T y){return x?y:x;} //Python style and/or
-TT UNUSED void cmin(T&x,T y){if(x>y)x=y;}; TT UNUSED void cmax(T&x,T y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
+TTU int len(T&x){return x.size();}
+TTU VPF(T) ZIP(T &a, T &b){ll n = min(a.size(), b.size()); VPF(T) v(n, {"",""}); REP(n){v[i].first=a[i]; v[i].second=b[i];} return v; } //Python style ZIP
+TTU T pop(VT &v){T tmp = v[v.size()-1]; v.pop_back(); return tmp;} //Python style pop: returns value on pop
+TTU T OR(T x,T y){return x?x:y;}; TTU T AND(T x,T y){return x?y:x;} //Python style and/or
+TTU void cmin(T&x,T y){if(x>y)x=y;}; TTU void cmax(T&x,T y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
 
 //MATH
 UNUSED ull ncr(ll n, ll r){if(n<1||r<1||r>=n) return 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;return k;}
 UNUSED bool isPrime(ll n){if(n<3||n%2==0)return n==2;REPs(3,sqrt(n)+1,2)if(n%i==0)return false;return true;}
 UNUSED ld frac(ld&a){return a-floor(a);} //Fractional part function
-TT UNUSED T gcd(T&a,T&b){return b?__gcd(a,b):a;}
-TT UNUSED T lcm(T&a,T&b){return a*b/gcd(a,b);}
+TTU T gcd(T&a,T&b){return b?__gcd(a,b):a;}
+TTU T lcm(T&a,T&b){return a*b/gcd(a,b);}
 
 void solve();
 
