@@ -93,16 +93,14 @@ signed main(){
 }
 
 void solve(){
-    int n, k1=0, k2=0; cin>>n;
+    int n, k=0; cin>>n;
     string s1, s2; cin>>s1>>s2;
     REP(n){
-        if(s1[i]=='1'){
-            if(i>0&&s2[i-1]=='1') k1++;
-            else if(i+1<n&&s2[i+1]=='1') k1++, s2[i+1]='2';
-            if(i>0&&s2[i-1]=='1') k1++, s2[i-1]='2';
-            else if(i+1<n&&s2[i+1]=='1') k1++, s2[i+1]='2';
-
-        }else if(s2[i]=='1') k1++, k2++;
+        if(s2[i]=='1'){
+            if(i>0 && s1[i-1]=='1') k++;
+            else if(s1[i]=='0') k++;
+            else if(i<n-1 && s1[i+1]=='1') s1[i+1]='0', k++;
+        }
     }
-    cout << max(k1, k2) << '\n';
+    cout << k << '\n';
 }

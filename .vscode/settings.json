@@ -18,6 +18,8 @@
         "regex": "cpp",
         "valarray": "cpp",
         "bitset": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "random": "cpp",
+        "*.tcc": "cpp"
     }
 }
