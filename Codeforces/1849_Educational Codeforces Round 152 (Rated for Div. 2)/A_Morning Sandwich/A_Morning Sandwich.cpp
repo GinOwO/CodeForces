@@ -1,8 +1,8 @@
 /*********************************
 |               OWO              |
 **********************************/
-#pragma GCC optimize("Ofast,unroll-loops") 
-#pragma GCC target("avx,avx2,fma") 
+//#pragma GCC optimize("Ofast,unroll-loops") 
+//#pragma GCC target("avx,avx2,fma") 
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -105,15 +105,24 @@ signed main(){
 }
 
 void solve(){
-    int k, q, d, m; cin>>k;
-    double n = sqrt(k);
-    if(n==(int)n) cout << n << " 1\n";
-    else{
-        d = floor(n); 
-        q = d*d; m = d+1;
-        if(k==q+m) cout << m << ' ' << m << '\n';
-        else if(k<q+m) cout << k-q << ' ' << m << '\n';
-        else cout << m << ' ' << (m*m)-k+1 << '\n';
-
-    }
+    int b, c, h, t=0; cin>>b>>c>>h;
+    if(b-->1){
+        if(h<b){
+            b-=h; 
+            t+=2*h;
+        }
+        else{
+            t+=2*b;
+            b=0;
+        }
+        if(c<b){ 
+            b=b-c; 
+            t+=2*c;
+        }
+        else if(b){ 
+            t+= 2*b;
+            b=0;
+        }
+    } else t = 1;
+    cout << t+1 << '\n';
 }

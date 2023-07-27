@@ -105,15 +105,19 @@ signed main(){
 }
 
 void solve(){
-    int k, q, d, m; cin>>k;
-    double n = sqrt(k);
-    if(n==(int)n) cout << n << " 1\n";
-    else{
-        d = floor(n); 
-        q = d*d; m = d+1;
-        if(k==q+m) cout << m << ' ' << m << '\n';
-        else if(k<q+m) cout << k-q << ' ' << m << '\n';
-        else cout << m << ' ' << (m*m)-k+1 << '\n';
-
+    int n, m, l, r, j=0, a=0, f=0; cin>>n>>m;
+    string s; cin>>s; VI Q(n+1);
+    SF(PII) seen;
+    REP(n){
+        j+=s[i]=='1';
+        Q[i+1]=j;
     }
+    while(m--){
+        cin>>l>>r;
+        if(seen.count(PII{l,r})) continue;
+        seen.insert(PII{l,r});
+        if(Q[l-1]==Q[r] || Q[r]-Q[l-1]==r-l+1) continue;
+        a++;
+    }
+    cout << OR(a,1LL) << '\n';
 }

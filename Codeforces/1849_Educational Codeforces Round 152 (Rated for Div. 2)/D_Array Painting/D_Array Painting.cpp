@@ -105,15 +105,5 @@ signed main(){
 }
 
 void solve(){
-    int k, q, d, m; cin>>k;
-    double n = sqrt(k);
-    if(n==(int)n) cout << n << " 1\n";
-    else{
-        d = floor(n); 
-        q = d*d; m = d+1;
-        if(k==q+m) cout << m << ' ' << m << '\n';
-        else if(k<q+m) cout << k-q << ' ' << m << '\n';
-        else cout << m << ' ' << (m*m)-k+1 << '\n';
-
-    }
+    
 }
