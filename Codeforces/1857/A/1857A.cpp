@@ -105,5 +105,9 @@ signed main(){
 }
 
 void solve(){
-    
+    int n, o=0; cin>>n;
+    VI arr(n); cin>>arr;
+    FOR(c,arr) o+=c%2;
+    if(o%2==0) YES();
+    else NO();
 }

@@ -105,5 +105,22 @@ signed main(){
 }
 
 void solve(){
-    
+    string x, best; cin>>x; best=x;
+    int carry = 0;
+    for(int i=x.size()-1; i>=0; i--){
+        if(carry){
+            if(x[i]=='9'){
+                x[i] = '0';
+                best = x;
+                continue;
+            }
+            else x[i]++;
+            best = x;
+        }
+        carry = 0;
+        if(x[i]>='5') carry=1;
+        x[i]='0';
+    }
+    if(carry) cout << carry << x << '\n';
+    else cout << best << '\n';
 }

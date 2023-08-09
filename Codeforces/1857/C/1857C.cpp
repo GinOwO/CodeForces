@@ -105,5 +105,21 @@ signed main(){
 }
 
 void solve(){
-    
+    int n, mi; cin>>n;
+    VI arr(n*(n-1)/2), ans; 
+    cin>>arr; MII mp;
+    FOR(c, arr){
+        if(!mp.count(c)) mp[c]=0;
+        mp[c]++;
+    }
+    mi = mp.begin()->second;
+    for(auto&[a,b]:mp){
+        ans.push_back(a);
+        if(b>mi){
+            ans.push_back(a);
+            mi = b;
+        }
+    }
+    while(ans.size()<n) ans.push_back(mp.rbegin()->first);
+    cout << ans << '\n';
 }
