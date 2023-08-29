@@ -41,3 +41,6 @@ vs_code_extensions_list.txt
 *.exe
 *.out
 *.app
+
+compiledSol
+checkerOut.txt
