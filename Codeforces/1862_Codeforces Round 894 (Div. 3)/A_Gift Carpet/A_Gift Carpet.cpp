@@ -1,7 +1,7 @@
 /*********************************
 |               OWO              |
 **********************************/
-#pragma GCC optimize("Ofast,unroll-loops") 
+//#pragma GCC optimize("Ofast,unroll-loops") 
 #pragma GCC target("avx,avx2,fma") 
 
 #include<bits/stdc++.h>
@@ -105,5 +105,24 @@ signed main(){
 }
 
 void solve(){
-    
+    int n, k, p=0; cin>>n>>k;
+    VS v(n); string s = "vika";
+    REP(n) cin>>v[i];
+    REP(k){
+        REPi(j,0,n,1){
+            if(v[j][i]==s[p]){
+                p++;
+                break;
+            }
+            if(p>3){
+                YES();
+                return;
+            }
+       }
+    }
+    if(p>3){
+        YES();
+        return;
+    }
+    NO();
 }

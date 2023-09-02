@@ -90,7 +90,7 @@ TTT void cmin(T&x,const T1&y){if(x>y)x=y;}; TTT void cmax(T&x,const T1&y){if(x<y
 //MATH
 UNUSED ull ncr(ll n, ll r){if(n<1||r<1||r>=n) return 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;return k;}
 UNUSED bool isPrime(ll n){if(n<3||n%2==0)return n==2;REPs(3,sqrt(n)+1,2)if(n%i==0)return false;return true;}
-UNUSED ld frac(ld&a){return a-floor(a);} //Fractional part function
+UNUSED ld frac(const ld&a){return a-floor(a);} //Fractional part function
 TTU T gcd(T&a,T&b){return b?__gcd(a,b):a;}
 TTU T lcm(T&a,T&b){return a*b/gcd(a,b);}
 
@@ -105,5 +105,12 @@ signed main(){
 }
 
 void solve(){
+    int n, sum=0, total; cin>>n;
+    VI v(n), arr; cin>>v;
+    if(v[0]!=n){NO(); return;}
+    for(int i=n; i>0; i--)
+        while(arr.size()<v[i-1]) arr.push_back(i);
+    if(v==arr) YES();
+    else NO();
     
 }

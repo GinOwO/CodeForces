@@ -7,15 +7,14 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define UNUSED [[maybe_unused]]
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
 #define int ll
-UNUSED const ll iinf=1e9;
-UNUSED const ll inf=1e18;
-UNUSED const int mod=998244353;
-UNUSED const int mod2=1e9+7;
+const ll iinf=1e9;
+const ll inf=1e18;
+const int mod=998244353;
+const int mod2=1e9+7;
 
 //Prefix: V - Vector, P - Pair, S - Set, M - Map
 //Suffix: F - Create on templates
@@ -46,7 +45,6 @@ typedef MTTF(int, VI) MIV;
 //TEMPLATE DEFINES
 #define TTT template<typename T,typename T1>
 #define TT template<typename T>
-#define TTU TT UNUSED
 
 //QoL Functions
 #define all(x) x.begin(), x.end()
@@ -74,25 +72,25 @@ typedef MTTF(int, VI) MIV;
 #define BITMASK_CHECK_ANY(x, mask) ((x) & (mask))
 
 //VECTOR/PAIR IO
-TTT istream &operator>>(UNUSED istream &cin,PTT &a) { return cin>>a.first>>a.second; }
-TT istream &operator>>(UNUSED istream &cin, UNUSED VT &a) { FOR(c,a) cin>>c; return cin; }
+TTT istream &operator>>(istream &cin,PTT &a) { return cin>>a.first>>a.second; }
+TT istream &operator>>(istream &cin, VT &a) { FOR(c,a) cin>>c; return cin; }
 TTT ostream &operator<<(ostream &cout,const PTT &a) { return cout<<a.first<<' '<<a.second; }
-TTT ostream &operator<<(UNUSED ostream &cout,UNUSED const VTT &a) { FOR(c,a) cout<<c<<'\n'; return cout; }
+TTT ostream &operator<<(ostream &cout,const VTT &a) { FOR(c,a) cout<<c<<'\n'; return cout; }
 TT ostream &operator<<(ostream &cout,const VT &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 TT basic_string<T> operator*(const basic_string<T> &s,int m) { auto r=s; m*=s.size(); r.resize(m); for (int i=s.size(); i<m; i++) r[i]=r[i-s.size()]; return r; }
 
-TTU int len(T&x){return x.size();}
-TTU VPF(T) ZIP(T &a, T &b){ll n = min(a.size(), b.size()); VPF(T) v(n, {"",""}); REP(n){v[i].first=a[i]; v[i].second=b[i];} return v; } //Python style ZIP
-TTU T pop(VT &v){T tmp = v[v.size()-1]; v.pop_back(); return tmp;} //Python style pop: returns value on pop
-TTU T OR(T x,T y){return x?x:y;}; TTU T AND(T x,T y){return x?y:x;} //Python style and/or
+TT int len(const T&x){return x.size();}
+TT VPF(T) ZIP(const T&a,const T&b){ll n = min(a.size(), b.size()); VPF(T) v(n, {"",""}); REP(n){v[i].first=a[i]; v[i].second=b[i];} return v; } //Python style ZIP
+TT T pop(VT &v){T tmp = v[v.size()-1]; v.pop_back(); return tmp;} //Python style pop: returns value on pop
+TT T OR(const T&x,const T&y){return x?x:y;}; TT T AND(const T&x,const T&y){return x?y:x;} //Python style and/or
 TTT void cmin(T&x,const T1&y){if(x>y)x=y;}; TTT void cmax(T&x,const T1&y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
 
 //MATH
-UNUSED ull ncr(ll n, ll r){if(n<1||r<1||r>=n) return 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;return k;}
-UNUSED bool isPrime(ll n){if(n<3||n%2==0)return n==2;REPs(3,sqrt(n)+1,2)if(n%i==0)return false;return true;}
-UNUSED ld frac(ld&a){return a-floor(a);} //Fractional part function
-TTU T gcd(T&a,T&b){return b?__gcd(a,b):a;}
-TTU T lcm(T&a,T&b){return a*b/gcd(a,b);}
+ull ncr(const ll&n,const ll&r){if(n<1||r<1||r>=n) return 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;return k;}
+bool isPrime(const ll&n){if(n<3||n%2==0)return n==2;REPs(3,sqrt(n)+1,2)if(n%i==0)return false;return true;}
+ld frac(const ld&a){return a-floor(a);} //Fractional part function
+TT T gcd(const T&a,const T&b){return b?__gcd(a,b):a;}
+TT T lcm(const T&a,const T&b){return a*b/gcd(a,b);}
 
 void solve();
 

@@ -105,5 +105,16 @@ signed main(){
 }
 
 void solve(){
-    
+    int n; cin>>n;
+    VI v(n), arr; cin>>v;
+    arr.push_back(v[0]);
+    REPk(1,n){
+        int q = min(v[i-1], v[i])-1;
+        if(!q){
+            if(v[i-1]!=1) arr.push_back(1);
+        }
+        else arr.push_back(q);
+        arr.push_back(v[i]);
+    }
+    cout << arr.size() << '\n' << arr << '\n';
 }
