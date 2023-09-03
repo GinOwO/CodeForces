@@ -105,5 +105,24 @@ signed main(){
 }
 
 void solve(){
-    
+    int n, k; cin>>n>>k;
+    string s; cin>>s;
+    if(k&1){
+        int k=0, j=0;
+        string s1, s2;
+        REP(n){
+            if(i&1) s1+=s[i];
+            else s2+=s[i];
+        }
+        sort(all(s1));
+        sort(all(s2));
+        s="";
+        REP(n){
+            s+=i&1?s1[k++]:s2[j++];
+        }
+    }
+    else{
+        sort(all(s));
+    }
+    cout << s << '\n';
 }

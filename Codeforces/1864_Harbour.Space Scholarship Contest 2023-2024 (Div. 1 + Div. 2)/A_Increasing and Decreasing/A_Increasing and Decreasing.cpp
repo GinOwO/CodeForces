@@ -1,7 +1,7 @@
 /*********************************
 |               OWO              |
 **********************************/
-#pragma GCC optimize("Ofast,unroll-loops") 
+//#pragma GCC optimize("Ofast,unroll-loops") 
 #pragma GCC target("avx,avx2,fma") 
 
 #include<bits/stdc++.h>
@@ -105,5 +105,11 @@ signed main(){
 }
 
 void solve(){
-    
+    int x,y,n; cin>>x>>y>>n;
+    VI ans(n); ans[0]=x; ans[n-1]=y;
+    for(int i=n-2; i>0; i--){
+        ans[i]=ans[i+1]-n+i+1;
+    }
+    if(ans[1]-ans[0]<=n-2) cout << "-1\n";
+    else cout << ans << '\n';
 }

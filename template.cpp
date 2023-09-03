@@ -86,7 +86,8 @@ TT T OR(const T&x,const T&y){return x?x:y;}; TT T AND(const T&x,const T&y){retur
 TTT void cmin(T&x,const T1&y){if(x>y)x=y;}; TTT void cmax(T&x,const T1&y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
 
 //MATH
-ull ncr(const ll&n,const ll&r){if(n<1||r<1||r>=n) return 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;return k;}
+ull pow(ull x, ull y, ull p){ull res = 1; x %= p; if(x==0)return 0;while(y>0){if(y&1)res=(res*x)%p;y>>=1;x=(x*x)%p;}return res;} // Modulo Expo
+ull ncr(const ll&n,ll r){if(n<1||r<1||r>=n) return 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;return k;}
 bool isPrime(const ll&n){if(n<3||n%2==0)return n==2;REPs(3,sqrt(n)+1,2)if(n%i==0)return false;return true;}
 ld frac(const ld&a){return a-floor(a);} //Fractional part function
 TT T gcd(const T&a,const T&b){return b?__gcd(a,b):a;}
