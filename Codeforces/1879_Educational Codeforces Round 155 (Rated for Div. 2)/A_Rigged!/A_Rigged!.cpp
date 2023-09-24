@@ -104,5 +104,14 @@ signed main(){
 }
 
 void solve(){
-    
+    int n, a, b, p, q, pass=1;
+    cin >> n >> a >> b;
+    while(--n){
+        cin>>p>>q;
+        if(p>=a){
+            if(q>=b) pass = 0;
+        }
+    }
+    if(pass) cout << a << '\n';
+    else cout << "-1\n";
 }

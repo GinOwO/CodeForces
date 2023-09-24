@@ -104,5 +104,13 @@ signed main(){
 }
 
 void solve(){
-    
+    int n; cin>>n;
+    VI a(n), b(n); cin>>a>>b;
+    int p=*min_element(all(a)), q=*min_element(all(b));
+    int sa=0, sb=0;
+    REP(n){
+        sa+=a[i]+q;
+        sb+=b[i]+p;
+    }
+    cout<<min(sa, sb)<<'\n';
 }

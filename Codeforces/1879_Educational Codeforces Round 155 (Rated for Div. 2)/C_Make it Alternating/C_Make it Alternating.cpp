@@ -103,6 +103,29 @@ signed main(){
     return 0;
 }
 
+int modFact(int n, int p){
+    int result = 1;
+    for (int i = 1; i <= n; i++)
+        result = (result * i) % p;
+ 
+    return result;
+}
+
 void solve(){
-    
+    string s; cin >> s;
+    int a=0, b=1, cnt=1; 
+    REPk(1,s.size()){
+        if(s[i-1]==s[i]) cnt++;
+        else if(cnt>1){
+            a=(a+cnt-1)%mod;
+            b=(b*cnt)%mod;
+            cnt=1;
+        }
+    }
+    if(cnt>1){
+        a=(a+cnt-1)%mod;
+        b=(b*cnt)%mod;
+    }
+    b=(b*modFact(a, mod))%mod;
+    cout << a << " " << b << '\n';
 }

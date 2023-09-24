@@ -106,8 +106,7 @@ signed main(){
 void solve(){
     int n, k, s=0; cin>>n>>k;
     VI a(n), h(n); cin >> a >> h;
-    VF(PII) v; //prefix[0]=0;
-    //REP(n) prefix[i+1]=prefix[i]+a[i];
+    VF(PII) v; 
 
     REP(n-1){
         if(h[i]%h[i+1]==0) continue;

@@ -99,10 +99,20 @@ signed main(){
     ios::sync_with_stdio(false);
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr); cout.tie(nullptr);
-    int t; cin >> t; while(t--) solve(); 
+    solve(); 
     return 0;
 }
 
 void solve(){
-    
+    int n; cin>>n;
+    VI a(n), prefix(n+1); cin>>a;
+    prefix[0]=0;
+    REP(n) prefix[i+1]=prefix[i]^a[i];
+    int ans=0;
+    REPk(1,n+1){
+        REPi(j,i,n+1,1){
+            (ans+=(prefix[j]^prefix[i-1])*(j-i+1))%=mod;
+        }
+    }
+    cout << ans << '\n';
 }
