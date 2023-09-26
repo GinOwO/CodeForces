@@ -20,6 +20,8 @@
         "bitset": "cpp",
         "cmath": "cpp",
         "random": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "chrono": "cpp",
+        "functional": "cpp"
     }
 }
