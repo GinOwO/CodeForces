@@ -2,7 +2,7 @@
 |               OWO              |
 **********************************/
 #pragma GCC optimize("Ofast,unroll-loops") 
-#pragma GCC target("avx2,fma") 
+#pragma GCC target("tune=native") 
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -86,9 +86,12 @@ TT T OR(const T&x,const T&y){return x?x:y;}; TT T AND(const T&x,const T&y){retur
 TTT void cmin(T&x,const T1&y){if(x>y)x=y;}; TTT void cmax(T&x,const T1&y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
 
 //MATH
+//MATH
+constexpr auto sieve(){int m=1e6+1,q=0;bool o[m]={};array<int,78498>primes={};memset(o,1,sizeof(o));for(int p=2;p*p<m;p++)if(o[p])REPi(i,p*p,m,p)o[i]=false;REPi(p,2,m,1)if(o[p])primes[q++]=p;return primes;}
 ull pow(ull x, ull y, ull p){ull res = 1; x %= p; if(x==0)return 0;while(y>0){if(y&1)res=(res*x)%p;y>>=1;x=(x*x)%p;}return res;} // Modulo Expo
 ull ncr(const ll&n,ll r){if(n<1||r<1||r>=n) return 1; ull k=1;cmin(r,n-r); for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;return k;}
 bool isPrime(const ll&n){if(n<3||n%2==0)return n==2;REPs(3,sqrt(n)+1,2)if(n%i==0)return false;return true;}
+SI primeSet(){SI primes; for(auto&c:sieve())primes.insert(c); return primes;}
 ld frac(const ld&a){return a-floor(a);} //Fractional part function
 TT T gcd(const T&a,const T&b){return b?__gcd(a,b):a;}
 TT T lcm(const T&a,const T&b){return a*b/gcd(a,b);}
