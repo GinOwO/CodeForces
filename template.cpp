@@ -100,18 +100,17 @@ namespace Structures{
 #define bc(x) if(q.first<=k.first&&q.second>=k.second)return x;if(q.first>k.second||q.second<k.first)return d;
 TT class SegTree{
 private:
-    VF(T) a;T d;function<bool(T,T)>cf;int s;
-    void build(const VF(T)&v,int l,int r,int p){if(l==r){a[p]=v[l];return;}int m=(l+r)/2;this->build(v,l,m,2*p);this->build(v,m+1,r,2*p+1);a[p]=a[2*p+!cf(a[2*p],a[2*p+1])];}
-    T query(const PII&q,const PII&k,const int p=1){bc(a[p]);T a=this->query(q,{k.first,(k.first+k.second)/2},2*p),b=this->query(q,{(k.first+k.second)/2+1,k.second},2*p+1);return cf(a,b)?a:b;}
+    VF(T) a;T d;const function<T(T,T)>cf;int s;
+    void build(const VF(T)&v,int l,int r,int p){if(l==r){a[p]=v[l];return;}int m=(l+r)/2;this->build(v,l,m,2*p);this->build(v,m+1,r,2*p+1);a[p]=cf(a[2*p],a[2*p+1]);}
+    T query(const PII&q,const PII&k,const int p=1){bc(a[p]);T a=this->query(q,{k.first,(k.first+k.second)/2},2*p),b=this->query(q,{(k.first+k.second)/2+1,k.second},2*p+1);return cf(a,b);}
     int index(const PII&q,const PII&k,const int p=1){bc(p);T a=this->index(q,{k.first,(k.first+k.second)/2},2*p),b=this->index(q,{(k.first+k.second)/2+1,k.second},2*p+1);return(a!=d)?a:b;}
-    int index(int idx){return this->index({idx,idx},{0,s-1});}void update(int p){if(p<1)return; a[p]=a[2*p+!cf(a[2*p],a[2*p+1])];update(p/2);}
+    int index(int idx){return this->index({idx,idx},{0,s-1});}void update(int p){if(p<1)return; a[p]=cf(a[2*p],a[2*p+1]);update(p/2);}
 public:
-    SegTree(const VF(T)&v,T d=INT_MIN,function<bool(T,T)>c=greater<T>{}):cf(c),d(d),s(len(v)){a=VF(T)(s*4+1, d);this->build(v, 0, s-1, 1);}
+    SegTree(const VF(T)&v,T d=INT_MIN,function<T(T,T)>c=[](T x,T y){return x>y?x:y;}):cf(c),d(d),s(len(v)){a=VF(T)(s*4+1, d);this->build(v, 0, s-1, 1);}
     T query(int a,int b){return this->query({a,b},{0,s-1});}void update(int idx,int val){int ind=this->index(idx);if(ind==d)return;a[ind]=val;update(ind/2);}
 };
 #undef bc
 }
-
 
 void solve();
 
