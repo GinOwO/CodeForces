@@ -120,5 +120,14 @@ signed main(){
 }
 
 void solve(){
-    
+    int n, t; cin>>n;
+    VI x(n); cin>>x;
+    REP(n){
+        cin>>t;
+        x[i]=t-x[i];
+    }
+    sort(all(x));
+    int i=0, j=n-1, ans=0;
+    while(i<j) if(x[i++]+x[j]>=0) ans++, j--;
+    cout << ans << '\n';
 }
