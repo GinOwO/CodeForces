@@ -4,11 +4,8 @@
 #pragma GCC optimize("Ofast,unroll-loops") 
 #pragma GCC target("tune=native") 
 
-#include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
- 
+#include<bits/stdc++.h>
 using namespace std;
-using namespace __gnu_pbds;
 
 typedef long long ll;
 typedef unsigned long long ull;
@@ -18,8 +15,6 @@ const ll iinf=1e9;
 const ll inf=1e18;
 const int mod=998244353;
 const int mod2=1e9+7;
-
-typedef tree<PII, null_type, less<PII>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
 //Prefix: V - Vector,P - Pair,S - Set,M - Map
 //Suffix: F - Create on templates
@@ -91,6 +86,7 @@ TT T OR(const T&x,const T&y){return x?x:y;};TT T AND(const T&x,const T&y){return
 TTT void cmin(T&x,const T1&y){if(x>y)x=y;};TTT void cmax(T&x,const T1&y){if(x<y)x=y;} // Change value on comp: x=f(x,y)
 
 //MATH
+//MATH
 constexpr auto sieve(){int m=1e6+1,q=0;bool o[m]={};array<int,78498>primes={};memset(o,1,sizeof(o));for(int p=2;p*p<m;p++)if(o[p])REPi(i,p*p,m,p)o[i]=false;REPi(p,2,m,1)if(o[p])primes[q++]=p;return primes;}
 ull pow(ull x,ull y,ull p){ull res=1;x %= p;if(x==0)return 0;while(y>0){if(y&1)res=(res*x)%p;y>>=1;x=(x*x)%p;}return res;} // Modulo Expo
 ull ncr(const ll&n,ll r){if(n<1||r<1||r>=n)return 1;ull k=1;cmin(r,n-r);for(ll i=1;i<=r;i++)k=(k*(n-i+1))/i;return k;}
@@ -124,5 +120,12 @@ signed main(){
 }
 
 void solve(){
-    
+    int arr[128]={0};
+    VS as(3); cin>>as;
+    FOR(s,as)
+        FOR(c,s)
+            arr[c]++;
+    if(arr['A']<3) cout << "A\n";
+    else if(arr['B']<3) cout << 'B' << '\n';
+    else cout << 'C' << '\n';
 }
