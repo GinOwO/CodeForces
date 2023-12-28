@@ -119,7 +119,50 @@ signed main(){
     return 0;
 }
 
+int maxCost(const vector<vector<int>>& arr){
+    int n = arr.size();
+    vector<int> dp(5, 0); dp[0]=dp[4]=INT_MIN;
+    for(auto&v:arr){
+        vector<int> nDP(5, INT_MIN);
+        for(int i=1; i<=3; i++)
+            nDP[i] = v[i-1]+max(dp[i-1], min(dp[i], dp[i+1]));
+        dp = nDP;
+    }
+    int mn = INT_MIN;
+    for(auto&c:dp) mn = max(mn, c);
+    return mn;
+}
+
 void solve(){
-    string s; cin>>s;
-    cout << s << '\n';
+    int n; cin>>n; 
+    VF(VI) arr(3, VI(n)); cin>>arr;
+    VF(VPF(int)) mp(3, VPF(int)(3, {-1, -1}));
+
+    REP(3){
+        REPi(j, 0, n, 1){
+            int c = arr[i][j];
+            if(c > mp[i][0].first){
+                mp[i][2] = mp[i][1];
+                mp[i][1] = mp[i][0];
+                mp[i][0] = {c, j};
+            }
+            else if(c > mp[i][1].first){
+                mp[i][2] = mp[i][1];
+                mp[i][1] = {c, j};
+            }
+            else if(c > mp[i][2].first){
+                mp[i][2] = {c, j};
+            }
+        }
+    }
+
+    int ans = 0;
+
+    FOR(x, mp[0])
+        FOR(y, mp[1])
+            FOR(z, mp[2])
+                if(x.second != y.second && y.second != z.second && x.second != z.second)
+                    ans = max(ans, x.first+y.first+z.first);
+
+    cout << ans << '\n';
 }

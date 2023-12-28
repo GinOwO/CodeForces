@@ -120,6 +120,15 @@ signed main(){
 }
 
 void solve(){
-    string s; cin>>s;
-    cout << s << '\n';
+    int seen[128] = {0}, n, cnt=0, ans=0; 
+    string s; cin>>n>>s;
+
+    REP(n){
+        if(!seen[s[i]]){
+            seen[s[i]]++;
+            cnt++;
+        }
+        ans+=cnt;
+    }
+    cout << ans << '\n';
 }

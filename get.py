@@ -14,9 +14,11 @@ def get_problem(contest_id, letter):
     try: os.makedirs(f"./Codeforces/{contest_id}/{letter}/")
     except: pass
     
-    with open(f"{_dir}/input.txt", 'w') as f: f.write(inp.text)
-    with open(f"{_dir}/output.txt", 'w') as f: f.write(out.text)
+    with open(f"{_dir}/input.txt", 'w') as f: f.write(inp.get_text(separator="\n").strip('\n'))
+    with open(f"{_dir}/output.txt", 'w') as f: f.write(out.get_text(separator="\n").strip('\n'))
     shutil.copyfile("template.cpp", f"{_dir}/{contest_id}{letter}.cpp")
+
+    print(f"Wrote to {_dir}/")
 
 def main():
     if len(sys.argv) != 3:

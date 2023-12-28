@@ -120,6 +120,18 @@ signed main(){
 }
 
 void solve(){
-    string s; cin>>s;
-    cout << s << '\n';
+    int n; cin>>n;
+    VI arr(n); cin>>arr;
+
+    int ans = arr[0], cur = min(0ll, arr[0]), sum=arr[0];
+    REPk(1,n){
+        if (abs(arr[i] % 2) == abs(arr[i - 1] % 2)) {
+            cur = 0;
+            sum = 0;
+        }
+        sum += arr[i];
+        ans = max(ans, sum - cur);
+        cur = min(cur, sum);
+    }
+    cout<<ans<<'\n';
 }
