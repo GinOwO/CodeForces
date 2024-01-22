@@ -19,7 +19,6 @@ const ll inf=1e18;
 const int mod=998244353;
 const int mod2=1e9+7;
 
-typedef tree<PII, null_type, less<PII>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
 //Prefix: V - Vector,P - Pair,S - Set,M - Map
 //Suffix: F - Create on templates
@@ -46,6 +45,7 @@ typedef SF(int) SI;
 typedef PF(int) PII;
 typedef MF(int) MII;
 typedef MTTF(int,VI) MIV;
+typedef tree<PII, null_type, less<PII>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
 //TEMPLATE DEFINES
 #define TTT template<typename T,typename T1>

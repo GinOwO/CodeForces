@@ -19,7 +19,6 @@ const ll inf=1e18;
 const int mod=998244353;
 const int mod2=1e9+7;
 
-typedef tree<PII, null_type, less<PII>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
 //Prefix: V - Vector,P - Pair,S - Set,M - Map
 //Suffix: F - Create on templates
@@ -47,6 +46,7 @@ typedef PF(int) PII;
 typedef MF(int) MII;
 typedef MTTF(int,VI) MIV;
 
+typedef tree<PII, null_type, less<PII>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 //TEMPLATE DEFINES
 #define TTT template<typename T,typename T1>
 #define TT template<typename T>
@@ -123,7 +123,16 @@ signed main(){
     return 0;
 }
 
+const auto bitlist = [](){
+    array<ull, 64> b;
+    b[0] = 1;
+    REPk(1,64) {
+        b[i] = (b[i-1] << 1) | b[0];
+    }
+    return b;
+}();
+
+
 void solve(){
-    string s;
-    cin>>s;
+    
 }
