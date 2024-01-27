@@ -75,6 +75,7 @@ typedef tree<PII, null_type, less<PII>, rb_tree_tag, tree_order_statistics_node_
 #define BITMASK_FLIP(x,mask) ((x) ^= (mask))
 #define BITMASK_CHECK_ALL(x,mask) (!(~(x) & (mask)))
 #define BITMASK_CHECK_ANY(x,mask) ((x) & (mask))
+constexpr auto bitlist(){array<ull,64>b={0};b[0]=1;REPk(1,64)b[i]=(b[i-1]<<1)|b[0];return b;}
 
 //VECTOR/PAIR IO
 TTT istream &operator>>(istream &cin,PTT &a){return cin>>a.first>>a.second;}
@@ -123,16 +124,6 @@ signed main(){
     return 0;
 }
 
-const auto bitlist = [](){
-    array<ull, 64> b;
-    b[0] = 1;
-    REPk(1,64) {
-        b[i] = (b[i-1] << 1) | b[0];
-    }
-    return b;
-}();
-
-
 void solve(){
-    
+
 }
