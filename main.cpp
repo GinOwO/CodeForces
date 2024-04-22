@@ -1,8 +1,10 @@
 /*********************************
 |               OWO              |
 **********************************/
-// #pragma GCC optimize("Ofast,unroll-loops") 
+#ifndef _DEBUG
+#pragma GCC optimize("Ofast,unroll-loops") 
 #pragma GCC target("tune=native") 
+#endif
 
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -108,10 +110,13 @@ namespace Structures {
 void solve( );
 
 signed main( ) {
+#ifdef _DEBUG
+    cout << "Debugging\n";
+#endif
     ios::sync_with_stdio( false );
     ios_base::sync_with_stdio( false );
     cin.tie( nullptr ); cout.tie( nullptr );
-    int t; cin >> t; while ( t-- )solve( );
+    int t; cin >> t; while ( t-- ) solve( );
     return 0;
 }
 
