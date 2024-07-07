@@ -6,7 +6,10 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/main.exe",
-            "args": ["<", "${fileDirname}/input/input0.txt"],
+            "args": [
+                "<",
+                "${fileDirname}/input/input0.txt"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -27,7 +30,10 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/main.exe",
-            "args": ["<", "input.txt"],
+            "args": [
+                "<",
+                "input.txt"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -48,7 +54,10 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/main.exe",
-            "args": ["<", "${fileDirname}/input.txt"],
+            "args": [
+                "<",
+                "${fileDirname}/input.txt"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -71,7 +80,10 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["<", "${fileDirname}/input/input0.txt"],
+            "args": [
+                "<",
+                "${fileDirname}/input/input0.txt"
+            ],
         },
         {
             "name": "Python: main.py",
@@ -80,8 +92,10 @@
             "program": "main.py",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args":["<", "input.txt"]
+            "args": [
+                "<",
+                "input.txt"
+            ]
         },
     ]
 }
-
