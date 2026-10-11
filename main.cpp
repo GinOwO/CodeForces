@@ -281,8 +281,7 @@ signed main()
 {
 #ifdef _DEBUG
 	cout << "Debugging\n";
-#endif
-#ifndef _DEBUG
+#else
 	ios::sync_with_stdio(false);
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
