@@ -16,28 +16,20 @@ typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
 #define int ll
-const ll iinf = 1e9;
-const ll inf = 1e18;
-const int mod = 1e9 + 7;
-const int mod2 = 998244353;
+const int MOD = 1e9 + 7;
+const int MOD2 = 998244353;
 constexpr char dirs4[] = {0, -1, 0, 1, 0};
 constexpr char dirs8[] = {0, -1, -1, 0,	 1, 1, 0,  -1, -1,
 			  1, 1,	 -1, -1, 1, 1, -1, 0};
 
-//Prefix: V - Vector,P - Pair,S - Set,M - Map
-//Suffix: F - Create on templates
-//Types: 2 letter=pair,T: template,D: double,I: int,S: string
+// Prefix: V - Vector, P - Pair
+// Suffix: F - Create on templates
 
 #define VF(T) vector<T>
 #define VPF(T) VF(PF(T))
 
 #define PTTF(T1, T2) pair<T1, T2>
 #define PF(T) PTTF(T, T)
-
-#define SF(T) set<T>
-
-#define MTTF(T1, T2) map<T1, T2>
-#define MF(T) MTTF(T, T)
 
 #define PTT PTTF(T, T1)
 #define VTT VF(PTT)
@@ -46,14 +38,13 @@ constexpr char dirs8[] = {0, -1, -1, 0,	 1, 1, 0,  -1, -1,
 typedef VF(int) VI;
 typedef VF(VI) VVI;
 typedef VF(string) VS;
-typedef SF(int) SI;
 typedef PF(int) PII;
-typedef MF(int) MII;
 typedef VPF(int) VII;
 
 typedef tree<PII, null_type, less<PII>, rb_tree_tag,
 	     tree_order_statistics_node_update>
 	ordered_set;
+
 //TEMPLATE DEFINES
 #define TTT template <typename T, typename T1>
 #define TT template <typename T>
@@ -65,41 +56,32 @@ typedef tree<PII, null_type, less<PII>, rb_tree_tag,
 #define NO() std::cout << "NO\n"
 
 //LOOP STUFF
-#define REPi(i, k, n, s) for (auto i = k; i < n; i += s)
-#define REPs(k, n, s) REPi(i, k, n, s)
-#define REPk(k, n) REPs(k, n, 1)
-#define REP(n) REPk(0, n)
-#define REPj(i, n) REPi(i, 0, n, 1)
-#define FOR(var, seq) for (auto &var : seq)
-
-// BITWISE
-constexpr auto bitlist()
-{
-	array<ull, 64> b = {0};
-	b[0] = 1;
-	REPk(1, 64) b[i] = (b[i - 1] << 1) | b[0];
-	return b;
-}
+#define REPk(i, n) for (int i = 0; i < n; i++)
+#define REP(n) REP(i, n)
 
 //VECTOR/PAIR IO
 TTT istream &operator>>(istream &cin, PTT &a)
 {
 	return cin >> a.first >> a.second;
 }
+
 TT istream &operator>>(istream &cin, VT &a)
 {
 	FOR(c, a) cin >> c;
 	return cin;
 }
+
 TTT ostream &operator<<(ostream &cout, const PTT &a)
 {
 	return cout << a.first << ' ' << a.second;
 }
+
 TTT ostream &operator<<(ostream &cout, const VTT &a)
 {
 	FOR(c, a) cout << c << '\n';
 	return cout;
 }
+
 TT ostream &operator<<(ostream &cout, const VT &a)
 {
 	int n = a.size();
@@ -110,6 +92,7 @@ TT ostream &operator<<(ostream &cout, const VT &a)
 		cout << ' ' << a[i];
 	return cout;
 }
+
 TT basic_string<T> operator*(const basic_string<T> &s, int m)
 {
 	auto r = s;
@@ -120,34 +103,6 @@ TT basic_string<T> operator*(const basic_string<T> &s, int m)
 	return r;
 }
 
-TTT VPF(T) ZIP(const T1 &a, const T1 &b)
-{
-	ll n = min(a.size(), b.size());
-	VPF(T) v(n, {NULL, NULL});
-	REP(n)
-	{
-		v[i].first = a[i];
-		v[i].second = b[i];
-	}
-	return v;
-} //Python style ZIP
-TT T pop(VT &v)
-{
-	T tmp = v[v.size() - 1];
-	v.pop_back();
-	return tmp;
-} //Python style pop: returns value on pop
-TTT void cmin(T &x, const T1 &y)
-{
-	if (x > y)
-		x = y;
-};
-TTT void cmax(T &x, const T1 &y)
-{
-	if (x < y)
-		x = y;
-} // Change value on comp: x=f(x,y)
-
 //MATH
 constexpr auto sieve()
 {
@@ -157,10 +112,14 @@ constexpr auto sieve()
 	memset(o, 1, sizeof(o));
 	for (int p = 2; p * p < m; p++)
 		if (o[p])
-			REPi(i, p * p, m, p) o[i] = false;
-	REPi(p, 2, m, 1) if (o[p]) primes[q++] = p;
+			for (int i = p * p; i < m; i += p)
+				o[i] = false;
+	for (int p = 2; p < m; p += 1)
+		if (o[p])
+			primes[q++] = p;
 	return primes;
 }
+
 ull pow(ull x, ull y, ull p)
 {
 	ull res = 1;
@@ -175,38 +134,47 @@ ull pow(ull x, ull y, ull p)
 	}
 	return res;
 } // Modulo Expo
+
 ull ncr(const ll &n, ll r)
 {
 	if (n < 1 || r < 1 || r >= n)
 		return 1;
 	ull k = 1;
-	cmin(r, n - r);
+	if (n - r < r)
+		r = n - r;
 	for (ll i = 1; i <= r; i++)
 		k = (k * (n - i + 1)) / i;
 	return k;
 }
+
 bool isPrime(const ll &n)
 {
 	if (n < 3 || n % 2 == 0)
 		return n == 2;
-	REPs(3, sqrt(n) + 1, 2) if (n % i == 0) return false;
+	for (int i = 3; i < sqrt(n) + 1; i += 2)
+		if (n % i == 0)
+			return false;
 	return true;
 }
-SI primeSet()
+
+set<int> primeSet()
 {
-	SI primes;
+	set<int> primes;
 	for (auto &c : sieve())
 		primes.insert(c);
 	return primes;
 }
+
 ld frac(const ld &a)
 {
 	return a - floor(a);
 } //Fractional part function
+
 TT T gcd(const T &a, const T &b)
 {
 	return b ? __gcd(a, b) : a;
 }
+
 TT T lcm(const T &a, const T &b)
 {
 	return a * b / gcd(a, b);
