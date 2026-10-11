@@ -10,9 +10,9 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "/usr/lib64/ccache/g++",
-            "cStandard": "c17",
-            "cppStandard": "gnu++20",
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c23",
+            "cppStandard": "gnu++23",
             "intelliSenseMode": "linux-gcc-x64"
         },
         {

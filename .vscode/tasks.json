@@ -13,7 +13,7 @@
                 "main.cpp",
                 "-o",
                 "main.exe",
-                "--std=c++20",
+                "--std=c++23",
                 "-D_DEBUG=1"
             ],
             "problemMatcher": [
@@ -33,7 +33,7 @@
                 "\"${relativeFile}\"",
                 "-o",
                 "main.exe",
-                "--std=c++20",
+                "--std=c++23",
                 "-D_DEBUG=1"
             ],
             "problemMatcher": [
