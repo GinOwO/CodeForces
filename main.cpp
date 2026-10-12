@@ -57,7 +57,7 @@ typedef tree<PII, null_type, less<PII>, rb_tree_tag,
 
 //LOOP STUFF
 #define REPk(i, n) for (int i = 0; i < n; i++)
-#define REP(n) REP(i, n)
+#define REP(n) REPk(i, n)
 
 //VECTOR/PAIR IO
 TTT istream &operator>>(istream &cin, PTT &a)
@@ -67,7 +67,8 @@ TTT istream &operator>>(istream &cin, PTT &a)
 
 TT istream &operator>>(istream &cin, VT &a)
 {
-	FOR(c, a) cin >> c;
+	for (auto &c : a)
+		cin >> c;
 	return cin;
 }
 
@@ -78,7 +79,8 @@ TTT ostream &operator<<(ostream &cout, const PTT &a)
 
 TTT ostream &operator<<(ostream &cout, const VTT &a)
 {
-	FOR(c, a) cout << c << '\n';
+	for (auto &c : a)
+		cout << c << '\n';
 	return cout;
 }
 
@@ -106,17 +108,29 @@ TT basic_string<T> operator*(const basic_string<T> &s, int m)
 //MATH
 constexpr auto sieve()
 {
-	int m = 1e6 + 1, q = 0;
-	bool o[m] = {0};
-	array<int, 78498> primes = {};
-	memset(o, 1, sizeof(o));
-	for (int p = 2; p * p < m; p++)
-		if (o[p])
-			for (int i = p * p; i < m; i += p)
-				o[i] = false;
-	for (int p = 2; p < m; p += 1)
-		if (o[p])
+	constexpr int m = 1'299'710;
+	constexpr int N = (m + 1) / 2;
+
+	std::array<bool, N> is_prime{};
+	is_prime.fill(true);
+	is_prime[0] = false;
+
+	for (int p = 3; p * p < m; p += 2) {
+		if (is_prime[p / 2]) {
+			for (int i = p * p; i < m; i += 2 * p)
+				is_prime[i / 2] = false;
+		}
+	}
+
+	std::array<int, 100'000> primes{};
+	int q = 0;
+	primes[q++] = 2;
+
+	for (int p = 3; p < m; p += 2) {
+		if (is_prime[p / 2])
 			primes[q++] = p;
+	}
+
 	return primes;
 }
 
@@ -155,14 +169,6 @@ bool isPrime(const ll &n)
 		if (n % i == 0)
 			return false;
 	return true;
-}
-
-set<int> primeSet()
-{
-	set<int> primes;
-	for (auto &c : sieve())
-		primes.insert(c);
-	return primes;
 }
 
 ld frac(const ld &a)
@@ -255,6 +261,8 @@ signed main()
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 #endif
+	// freopen("input.txt", "r", stdin);
+	// freopen("output.txt", "w", stdout);
 	int t;
 	for (cin >> t; t > 0; t--)
 		solve();
