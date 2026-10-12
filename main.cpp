@@ -171,6 +171,26 @@ bool isPrime(const ll &n)
 	return true;
 }
 
+ull count_divisors(ull n)
+{
+	static const auto primes = sieve();
+	ull ans = 1;
+
+	for (int p : primes) {
+		if (p * p > n)
+			break;
+		if (n % p == 0) {
+			int exponent = 0;
+			while (n % p == 0) {
+				n /= p;
+				exponent++;
+			}
+			ans *= (exponent + 1);
+		}
+	}
+	return ans * (1 + (n > 1));
+}
+
 ld frac(const ld &a)
 {
 	return a - floor(a);
@@ -263,9 +283,9 @@ signed main()
 #endif
 	// freopen("input.txt", "r", stdin);
 	// freopen("output.txt", "w", stdout);
-	int t;
-	for (cin >> t; t > 0; t--)
-		solve();
+	// int t;
+	// for (cin >> t; t > 0; t--)
+	solve();
 	return 0;
 }
 
