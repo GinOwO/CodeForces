@@ -191,6 +191,28 @@ ull count_divisors(ull n)
 	return ans * (1 + (n > 1));
 }
 
+ll fibonacci(ll n)
+{
+	if (n == 0)
+		return 0;
+
+	auto [a, b] = fibonacci(n / 2) == 0 ? PII{0, 1} : PII{0, 1};
+
+	auto fib = [&](auto &&self, long long n) {
+		if (n == 0)
+			return PII{0, 1};
+
+		auto [a, b] = self(self, n / 2);
+
+		ll c = a * ((2 * b % MOD - a + MOD) % MOD) % MOD;
+		ll d = (a * a % MOD + b * b % MOD) % MOD;
+
+		return n % 2 == 0 ? PII{c, d} : PII{d, (c + d) % MOD};
+	};
+
+	return fib(fib, n).first;
+}
+
 ld frac(const ld &a)
 {
 	return a - floor(a);
